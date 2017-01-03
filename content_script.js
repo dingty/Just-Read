@@ -339,7 +339,7 @@ function getArticleDate() {
     if(date)
         return date.replace(/on\s/gi, '').replace(/(?:\r\n|\r|\n)/gi, '&nbsp;').replace(/[<]br[^>]*[>]/gi,'&nbsp;'); // Replace <br>, \n, and "on"
 
-    return "Unknown date";
+    return document.getElementsByClassName("time")[0].textContent.trim();
 }
 
 function checkHeading(elem, heading, del) {
@@ -453,7 +453,7 @@ function getArticleAuthor() {
         return author.replace(/by\s/ig, ''); // Replace "by"
     }
 
-    return "Unknown author";
+    return document.getElementsByClassName("src")[0].textContent.trim();
 }
 
 // Remove what we added (besides styles)
@@ -692,7 +692,7 @@ function addExtInfo() {
     bugAnchor.target = "_blank";
     bugReporter.appendChild(bugAnchor);
 
-    extContainer.appendChild(viewedUsing);
+    // extContainer.appendChild(viewedUsing);
     extContainer.appendChild(bugReporter);
 
     return extContainer;
